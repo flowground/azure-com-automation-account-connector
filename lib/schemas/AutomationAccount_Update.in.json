@@ -1,0 +1,81 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._]+$"
+        },
+        "automationAccountName": {
+            "required": true,
+            "type": "string"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The parameters supplied to the update automation account operation.",
+            "properties": {
+                "location": {
+                    "description": "Gets or sets the location of the resource.",
+                    "type": "string"
+                },
+                "name": {
+                    "description": "Gets or sets the name of the resource.",
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "Gets or sets account update properties.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "sku": {
+                            "description": "Gets or sets account SKU.",
+                            "properties": {
+                                "capacity": {
+                                    "description": "Gets or sets the SKU capacity.",
+                                    "format": "int32",
+                                    "type": "integer"
+                                },
+                                "family": {
+                                    "description": "Gets or sets the SKU family.",
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "Gets or sets the SKU name of the account.",
+                                    "enum": [
+                                        "Free",
+                                        "Basic"
+                                    ],
+                                    "type": "string",
+                                    "x-ms-enum": {
+                                        "modelAsString": true,
+                                        "name": "SkuNameEnum"
+                                    }
+                                }
+                            },
+                            "required": [
+                                "name"
+                            ],
+                            "type": "object"
+                        }
+                    }
+                },
+                "tags": {
+                    "additionalProperties": {
+                        "type": "string"
+                    },
+                    "description": "Gets or sets the tags attached to the resource.",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
